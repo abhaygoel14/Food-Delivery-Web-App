@@ -40,3 +40,8 @@
   display: flex;
   justify-content: space-between;
 }
+.searchBar {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
