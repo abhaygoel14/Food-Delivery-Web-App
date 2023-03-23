@@ -1,0 +1,42 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid black;
+}
+
+.nav-items > ul {
+  list-style: none;
+  display: flex;
+}
+
+.nav-items > ul > li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.logo {
+  width: 120px;
+  height: 70px;
+  cursor: pointer;
+}
+
+.card {
+  padding: 10px;
+  width: 200px;
+  margin: 10px;
+  border: 1px solid black;
+}
+
+.card :hover {
+  color: red;
+}
+.card > img {
+  width: 100%;
+}
+
+.resturantList {
+  display: flex;
+  justify-content: space-between;
+}
