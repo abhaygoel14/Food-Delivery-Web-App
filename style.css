@@ -1,8 +1,15 @@
+/* Select all CSS */
+* {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
 .header {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   padding: 10px;
-  margin: 10px;
   border: 1px solid black;
 }
 
@@ -23,25 +30,47 @@
 }
 
 .card {
+  width: 240px;
+  border-radius: 5px;
+  box-shadow: -1px 5px 10px 5px rgba(42, 42, 42, 0.2);
   padding: 10px;
-  width: 200px;
-  margin: 10px;
-  border: 1px solid black;
+  margin: 20px;
+  cursor: pointer;
 }
 
 .card :hover {
-  color: red;
+  transform: scale(1.05);
 }
 .card > img {
   width: 100%;
+  border-radius: 10px;
 }
-
 .resturantList {
+  width: auto;
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 .searchBar {
   padding: 10px;
   display: flex;
   justify-content: center;
+}
+
+/** Shimmer UI CSS **/
+.shimmer-card {
+  position: relative;
+  width: 240px;
+  border-radius: 5px;
+  box-shadow: -1px 5px 10px 5px rgba(42, 42, 42, 0.2);
+  padding: 10px;
+  margin: 20px;
+  cursor: pointer;
+}
+.shimmer-card > .shimmer-image {
+  width: 100%;
+  border-radius: 10px;
+  background: rgb(196, 188, 188);
+  height: 224px;
+  overflow: hidden;
 }
