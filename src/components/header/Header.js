@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { LOGO_URL } from "../../constant";
+import { Link } from "react-router-dom";
+import { LOGO_URL } from "../../../constant";
 
 const Heading = () => {
   const [isAuthenticate, setIsAuthenticate] = useState(false);
@@ -13,13 +14,21 @@ const Heading = () => {
     <div className="header">
       <div style={{ display: "flex" }}>
         <img className="logo" src={LOGO_URL} alt="logo" />
-        <h1>Foodie</h1>
+        <Link to={"/"}>
+          <h1>Foodie</h1>
+        </Link>
       </div>
       <div className="nav-items">
         <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Cart</li>
+          <Link to="/">
+            <li>Home</li>
+          </Link>
+          <Link to="/about">
+            <li>About</li>
+          </Link>
+          <Link to="/contact">
+            <li>Contact</li>
+          </Link>
         </ul>
       </div>
       <button

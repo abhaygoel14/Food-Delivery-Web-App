@@ -1,33 +1,50 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import Body from "./src/components/Body";
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+import About from "./src/components/header/About";
+import Contact from "./src/components/header/Contact";
 import Footer from "./src/components/Footer";
-import Heading from "./src/components/Header";
+import Heading from "./src/components/header/Header";
+import Error from "./src/components/header/Error";
 import "./style.css";
-/**
- *
- * Header
- *  - Logo
- *  -Nav List(Item) - Home About Contact Sign in
- * -Body
- *  -Carousel
- *   -cards->
- *      0. Image
- *      1. Name
- *      2. Cuisines
- *      3. Location
- * Footer
- */
-//CoNFIG DRIVEN UI
+import Body from "./src/components/Body";
+import RestaurantMenu from "./src/components/RestaurantMenu";
+
 const AppLayout = () => {
   return (
     <>
       <Heading />
-      <Body />
+      <Outlet />
       <Footer />
     </>
   );
 };
 
+const appRoute = createBrowserRouter([
+  {
+    path: "/",
+    element: <AppLayout />,
+    errorElement: <Error />,
+    children: [
+      {
+        path: "/",
+        element: <Body />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+      {
+        path: "/:id",
+        element: <RestaurantMenu />,
+      },
+    ],
+  },
+]);
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AppLayout />);
+root.render(<RouterProvider router={appRoute} />);

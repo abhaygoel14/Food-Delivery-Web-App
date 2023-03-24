@@ -16,8 +16,8 @@
 .nav-items > ul {
   list-style: none;
   display: flex;
+  flex-wrap: wrap;
 }
-
 .nav-items > ul > li {
   padding: 10px;
   cursor: pointer;
@@ -73,4 +73,20 @@
   background: rgb(196, 188, 188);
   height: 224px;
   overflow: hidden;
+}
+.restaurant-menu {
+  padding: 10px;
+  display: flex;
+}
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: red;
+  color: white;
+  text-align: center;
+}
+.menu {
+  padding: 20px;
 }
