@@ -8,7 +8,7 @@ You need to write the following commands on the terminal screen(in vscode) so th
 Go to the project directory
 
 ```bash
-  cd Namaste-React
+  cd Food-Delivery-Web-App
 ```
 Install dependencies
 ```bash
