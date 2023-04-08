@@ -3,8 +3,20 @@ import { restaurant, RESTURANT_API_URL } from "../../constant";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import { Box, Button, TextField, Typography } from "@mui/material";
+import styled from "@emotion/styled";
 
-//filter Data accoring to Search Text
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: #3d4152;
+  &:focus,
+  &:hover {
+    text-decoration: none;
+    color: orange;
+  }
+`;
+
+//filter Data according to Search Text
 
 function filterData(searchText, restaurantList) {
   const filterData = restaurantList.filter((resturant) => {
@@ -33,10 +45,21 @@ const Body = () => {
   //CONDITIONAL RENDERING
   return (
     <>
-      <div className="searchBar">
-        <input
-          type="text"
+      <Box
+        sx={{ marginTop: "90px", display: "flex", justifyContent: "center" }}
+      >
+        <TextField
+          fullWidth
+          variant="outlined"
+          placeholder="Search for restaurant"
           value={searchText}
+          sx={{
+            width: "50%",
+            "& .MuiInputBase-root-MuiOutlinedInput-root": {
+              width: "80%",
+              paddingRight: 0,
+            },
+          }}
           onChange={(e) => {
             setSearchText(e.target.value);
             if (searchText.length <= 1) {
@@ -45,35 +68,79 @@ const Body = () => {
             const data = filterData(searchText, allRestaurantList);
             setFilterRestaurantList(data);
           }}
-        />
-        <button
-          type="submit"
-          onClick={() => {
-            const data = filterData(searchText, allRestaurantList);
-            setFilterRestaurantList(data);
+          InputProps={{
+            sx: {
+              "& .MuiOutlinedInput-input": {
+                outline: "none",
+                width: "80%",
+                paddingRight: 0,
+              },
+              "& .MuiOutlinedInput-input:focus": {
+                outline: "none",
+              },
+            },
+            endAdornment: (
+              <Box sx={{ marginLeft: 5 }}>
+                <Button
+                  type="submit"
+                  onClick={() => {
+                    const data = filterData(searchText, allRestaurantList);
+                    setFilterRestaurantList(data);
+                  }}
+                  sx={{
+                    background: "orange",
+                    color: "#3d4152",
+                    "&:hover ": {
+                      background: "orange",
+                    },
+                  }}
+                >
+                  Search
+                </Button>
+              </Box>
+            ),
           }}
-        >
-          Search
-        </button>
-      </div>
+        />
+      </Box>
       {allRestaurantList.length > 0 ? (
-        <div className="resturantList">
+        <Box className="resturantList" sx={{ background: "" }}>
           {filterRestaurantList.length > 0 ? (
             filterRestaurantList?.map((resturant) => {
               console.log(resturant?.data);
               return (
-                <Link to={"/" + resturant?.data?.id}>
+                <StyledLink to={"/" + resturant?.data?.id}>
                   <ResturantCard
                     {...resturant?.data}
                     key={resturant?.data?.id}
                   />
-                </Link>
+                </StyledLink>
               );
             })
           ) : (
-            <h1>Resturant you are trying to search is not available!</h1>
+            <Box
+              sx={{
+                marginTop: "200px",
+                background: "orange",
+                padding: "0 150px",
+                height: "160px",
+                borderRadius: "15px",
+              }}
+            >
+              <Typography
+                sx={{
+                  color: "#fdfdfd",
+                  fontSize: "24px",
+                  fontWeight: "bold",
+                  marginTop: "50px",
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
+                Resturant you are trying to search is not available !
+              </Typography>
+            </Box>
           )}
-        </div>
+        </Box>
       ) : (
         <Shimmer />
       )}

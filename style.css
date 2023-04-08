@@ -4,8 +4,9 @@
   padding: 0;
   overflow-x: hidden;
   box-sizing: border-box;
+  font-family: "Lato", sans-serif;
 }
-.header {
+/* .header {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -21,7 +22,7 @@
 .nav-items > ul > li {
   padding: 10px;
   cursor: pointer;
-}
+} */
 
 .logo {
   width: 120px;
@@ -29,20 +30,12 @@
   cursor: pointer;
 }
 
-.card {
-  width: 240px;
-  border-radius: 5px;
-  box-shadow: -1px 5px 10px 5px rgba(42, 42, 42, 0.2);
-  padding: 10px;
-  margin: 20px;
-  cursor: pointer;
-}
-
 .card :hover {
   transform: scale(1.05);
 }
-.card > img {
-  width: 100%;
+img {
+  width: 254px;
+  height: 160px;
   border-radius: 10px;
 }
 .resturantList {

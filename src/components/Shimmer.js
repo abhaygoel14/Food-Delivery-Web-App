@@ -1,17 +1,19 @@
+import { Box } from "@mui/material";
+
 const Shimmer = () => {
   return (
     <>
-      <div className="resturantList">
+      <Box className="resturantList" sx={{ marginTop: "78px" }}>
         {Array(10)
           .fill("")
           .map((e, i) => {
             return (
-              <div className="shimmer-card" key={i}>
-                <div className="shimmer-image"></div>
-              </div>
+              <Box className="shimmer-card" key={i}>
+                <Box className="shimmer-image"></Box>
+              </Box>
             );
           })}
-      </div>
+      </Box>
     </>
   );
 };
