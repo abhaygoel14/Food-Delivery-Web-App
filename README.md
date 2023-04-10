@@ -24,6 +24,12 @@ To create a build :
   npm run build
   yarn run build
 ```
+`Performance Measure by Lighthouse:`
+
+![image](https://user-images.githubusercontent.com/78078088/230981282-c3cb006a-d6ec-46b7-ae7d-785c2730161f.png)
+
+
 
 This application should now be running on `localhost`. If you want to Fork repository and want to run locally, follow this guidelines [Fork and Clone Github Repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo)
+
 
