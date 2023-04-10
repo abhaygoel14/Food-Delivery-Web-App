@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { CARD_IMG_URL, RESTAURANT_MENU_URL } from "../../constant";
 import Shimmer from "./Shimmer.js";
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { addItem, removeItem } from "../../utils/store/cartSlice";
 const RestaurantMenu = () => {
   const [restaurantMenu, setRestaurantMenu] = useState(0);
   const [restaurant, setRestaurant] = useState({});
@@ -19,6 +21,16 @@ const RestaurantMenu = () => {
         ?.card?.itemCards
     );
   }
+
+  const dispatch = useDispatch();
+
+  const handleAddItem = (menu) => {
+    dispatch(addItem(menu));
+  };
+  const handleRemoveItem = (menu) => {
+    console.log("Hello", menu);
+    dispatch(removeItem(menu));
+  };
   return restaurantMenu ? (
     <Box className="restaurant-menu" sx={{ marginTop: "88px" }}>
       <Box>
@@ -37,7 +49,19 @@ const RestaurantMenu = () => {
         <h1>Menu</h1>
         <ul>
           {restaurantMenu.map((menu, i) => {
-            return <li key={i}>{menu?.card?.info?.name}</li>;
+            return (
+              <Box sx={{ display: "flex" }}>
+                <li key={i}>
+                  {menu?.card?.info?.name}
+                  <Button onClick={() => handleAddItem(menu?.card?.info)}>
+                    Add Item
+                  </Button>
+                  <Button onClick={() => handleRemoveItem(menu?.card?.info)}>
+                    Remove
+                  </Button>
+                </li>
+              </Box>
+            );
           })}
         </ul>
       </Box>

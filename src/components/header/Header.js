@@ -1,8 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { LOGO_URL } from "../../../constant";
 import { Box, Button, Typography } from "@mui/material";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import styled from "@emotion/styled";
+import UserContext from "../../../utils/UserContext";
+import { useSelector } from "react-redux";
 
 const StyledHeading = styled(Box)`
   display: flex;
@@ -19,6 +22,16 @@ const StyledHeading = styled(Box)`
   transition: transform 0.3s ease;
   contain: size layout style;
   padding: 0 20px;
+  @media screen and (max-width: 600px) {
+    flex-direction: row;
+    align-items: center;
+    position: fixed;
+    padding: 10px;
+    height: 70px;
+    & img {
+      margin-bottom: 10px;
+    }
+  }
 `;
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -33,6 +46,9 @@ const StyledLink = styled(Link)`
 const StyledTypography = styled(Typography)`
   font-weight: 600;
   font-size: 16px;
+  @media screen and (max-width: 600px) {
+    font-size: 12px;
+  }
 `;
 
 const Heading = () => {
@@ -43,6 +59,9 @@ const Heading = () => {
   function getAuthentication() {
     setIsAuthenticate(true);
   }
+  const { user, setUser } = useContext(UserContext);
+  const cartItems = useSelector((store) => store.cart.items);
+  console.log(cartItems);
   return (
     <StyledHeading className="header">
       <div>
@@ -82,6 +101,19 @@ const Heading = () => {
           <StyledLink to="/contact">
             <StyledTypography>Contact</StyledTypography>
           </StyledLink>
+          <StyledLink to="/cart">
+            {cartItems.length}
+            <ShoppingCartIcon />
+          </StyledLink>
+          <StyledTypography
+            onClick={() =>
+              setUser({
+                name: "Abhay",
+              })
+            }
+          >
+            {user.name}
+          </StyledTypography>
         </Box>
       </Box>
       <Button
