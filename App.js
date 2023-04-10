@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import About from "./src/components/header/About";
-import Contact from "./src/components/header/Contact";
+import Help from "./src/components/header/Help";
 import Footer from "./src/components/Footer";
 import Heading from "./src/components/header/Header";
 import Error from "./src/components/header/Error";
@@ -52,8 +52,8 @@ const appRoute = createBrowserRouter([
         element: <About />,
       },
       {
-        path: "/contact",
-        element: <Contact />,
+        path: "/help",
+        element: <Help />,
       },
       {
         path: "/:id",

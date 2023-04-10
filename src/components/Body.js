@@ -37,10 +37,14 @@ const Body = () => {
 
   //API CALL OF SWIGGY
   async function getResturant() {
-    const response = await fetch(RESTURANT_API_URL);
-    const json = await response.json();
-    setFilterRestaurantList(json?.data?.cards[2]?.data?.data?.cards);
-    setAllRestaurantList(json?.data?.cards[2]?.data?.data?.cards);
+    try {
+      const response = await fetch(RESTURANT_API_URL);
+      const json = await response.json();
+      setFilterRestaurantList(json?.data?.cards[2]?.data?.data?.cards);
+      setAllRestaurantList(json?.data?.cards[2]?.data?.data?.cards);
+    } catch (e) {
+      return e.message;
+    }
   }
   //CONDITIONAL RENDERING
   return (

@@ -27,7 +27,7 @@ const Section = ({ title, description, isClicked, setisClicked }) => {
     </>
   );
 };
-const Contact = () => {
+const Help = () => {
   const [isClicked, setisClicked] = useState("about");
   return (
     <>
@@ -55,4 +55,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default Help;
