@@ -43,7 +43,7 @@ const Body = () => {
       setFilterRestaurantList(json?.data?.cards[2]?.data?.data?.cards);
       setAllRestaurantList(json?.data?.cards[2]?.data?.data?.cards);
     } catch (e) {
-      return e.message;
+      return console.error(e);
     }
   }
   //CONDITIONAL RENDERING

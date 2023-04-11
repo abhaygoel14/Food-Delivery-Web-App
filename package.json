@@ -1,6 +1,8 @@
 {
   "name": "namaste-react",
   "version": "1.0.0",
+  "proxy": "https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.517929&lng=88.38341199999999&page_type=DESKTOP_WEB_LISTING",
+  "homepage": "http://localhost:1234",
   "description": "This is Namastey React course",
   "scripts": {
     "dev": "parcel index.html",
@@ -12,6 +14,7 @@
   "devDependencies": {
     "@babel/core": "^7.21.3",
     "babel-plugin-transform-remove-console": "^6.9.4",
+    "buffer": "^5.7.1",
     "parcel": "^2.8.3",
     "process": "^0.11.10"
   },
@@ -21,6 +24,7 @@
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.11.15",
     "@reduxjs/toolkit": "^1.9.3",
+    "axios": "^1.3.5",
     "http-proxy-middleware": "^2.0.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
