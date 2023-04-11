@@ -3,10 +3,19 @@
 This is a web application for food delivery. It uses the Swiggy public API to fetch data and generate responses for restaurant cards and menus.
 
 `Features :`
-1. Restaurant cards with details fetched from the Swiggy API
-2. Menus with details fetched from the Swiggy API
-3. Login page (in progress)
-4. About page (in progress)
+1. Shimmer Ui
+2. Lazy Loading 
+3. Responsive
+4. Real Time Data Fetch From Api
+5. Working Search Bar
+6. Cart Using Redux Tool Kit
+7. Error Page
+
+Video link : https://drive.google.com/file/d/1f_ZQ_rfPjixU_mAxJhqRKUb4sJMcRmP_/view?usp=sharing
+
+
+https://user-images.githubusercontent.com/78078088/231143634-14b7a842-b32c-4fd3-b8d5-088f4e43d1ff.mp4
+
 
 ## 🔥 Clone this Repository
 You need to write the following commands on the terminal screen(in vscode) so that you can run this project locally.
