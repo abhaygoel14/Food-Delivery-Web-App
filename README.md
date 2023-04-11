@@ -11,6 +11,11 @@ This is a web application for food delivery. It uses the Swiggy public API to fe
 6. Cart Using Redux Tool Kit
 7. Error Page
 
+# DISCLAIMER : 
+
+`If you are trying to access the live website kindly use this extension and enable it so that 3rd party API can run.`
+https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf?hl=en 
+
 Video link : https://drive.google.com/file/d/1f_ZQ_rfPjixU_mAxJhqRKUb4sJMcRmP_/view?usp=sharing
 
 
