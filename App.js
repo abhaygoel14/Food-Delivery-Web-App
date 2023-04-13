@@ -17,7 +17,7 @@ import Cart from "./src/components/header/Cart";
 const AppLayout = () => {
   const [user, setUser] = useState({
     name: "Abhay Goel",
-    email: "dummy@gmail.com",
+    email: "abhay@gmail.com",
   });
   return (
     <>
