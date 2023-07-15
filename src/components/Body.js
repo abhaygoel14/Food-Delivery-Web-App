@@ -87,6 +87,7 @@ const Body = () => {
               <Box sx={{ marginLeft: 5 }}>
                 <Button
                   type="submit"
+                  data-testid="search"
                   onClick={() => {
                     const data = filterData(searchText, allRestaurantList);
                     setFilterRestaurantList(data);

@@ -8,6 +8,7 @@ import UserContext from "../../../utils/UserContext";
 import { useSelector } from "react-redux";
 import useIsLargeView from "../../../utils/useIsLargeView";
 import { Menu } from "@mui/icons-material";
+import ErrorBoundary from "../ErrorBoundary";
 
 const StyledHeading = styled(Box)`
   display: flex;
@@ -74,197 +75,200 @@ const Heading = () => {
   const cartItems = useSelector((store) => store.cart.items);
   console.log(cartItems);
   return (
-    <StyledHeading className="header">
-      <div>
-        <img className="logo" src={LOGO_URL} alt="logo" />
-      </div>
-      <Box
-        sx={{
-          display: "flex",
-          padding: "20px",
-          justifyContent: "space-between",
-          width: "100%",
-        }}
-      >
-        <StyledLink to={"/"}>
-          <Typography
-            sx={{
-              fontWeight: "700",
-              fontSize: isLargeView ? "20px" : "16px",
-            }}
-          >
-            Khana Khazana
-          </Typography>
-        </StyledLink>
-        {!isLargeView && (
-          <Box sx={{ display: "flex" }}>
-            <StyledLink to="/cart">
-              <ShoppingCartIcon />
-              <Typography
-                sx={{
-                  position: "absolute",
-                  top: 8,
-                  right: "23%",
-                  backgroundColor: "orange",
-                  borderRadius: "50%",
-                  color: "white",
-                  width: 20,
-                  height: 20,
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  overflow: "hidden",
-                }}
-              >
-                {cartItems.length}
-              </Typography>
-            </StyledLink>
-          </Box>
-        )}
-        {isLargeView ? (
-          <>
-            <Box
+    <ErrorBoundary>
+      <StyledHeading className="header">
+        <div>
+          <img data-testid="logo" className="logo" src={LOGO_URL} alt="logo" />
+        </div>
+        <Box
+          sx={{
+            display: "flex",
+            padding: "20px",
+            justifyContent: "space-between",
+            width: "100%",
+          }}
+        >
+          <StyledLink to={"/"}>
+            <Typography
               sx={{
-                display: "flex",
-                width: "70%",
-                justifyContent: "space-evenly",
-                overflow: "hidden",
+                fontWeight: "700",
+                fontSize: isLargeView ? "20px" : "16px",
               }}
             >
-              <StyledLink to="/">
-                <StyledTypography>Home</StyledTypography>
-              </StyledLink>
-              <StyledLink to="/about">
-                <StyledTypography>About</StyledTypography>
-              </StyledLink>
-              <StyledLink to="/help">
-                <StyledTypography>Help</StyledTypography>
-              </StyledLink>
-              <Box sx={{ display: "flex" }}>
-                <StyledLink to="/cart">
-                  <ShoppingCartIcon />
-                  <Typography
-                    sx={{
-                      position: "fixed",
-                      top: 8,
-                      right: "33%",
-                      backgroundColor: "orange",
-                      borderRadius: "50%",
-                      color: "white",
-                      width: 20,
-                      height: 21,
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      overflow: "hidden",
-                    }}
-                  >
-                    {cartItems.length}
-                  </Typography>
-                </StyledLink>
-              </Box>
-              <StyledTypography
-                onClick={() =>
-                  setUser({
-                    name: "Abhay",
-                  })
-                }
-              >
-                {user.name}
-              </StyledTypography>
-              <Button
-                type="submit"
-                onClick={() =>
-                  isAuthenticate
-                    ? setIsAuthenticate(false)
-                    : setIsAuthenticate(true)
-                }
-                sx={{
-                  background: "orange",
-                  width: "20%",
-                  height: "36px",
-                  color: "#3d4152",
-                  "&:hover ": {
-                    background: "orange",
-                  },
-                }}
-              >
-                {isAuthenticate ? "Log out" : "Login"}
-              </Button>
-            </Box>
-          </>
-        ) : (
-          <>
-            <Menu onClick={() => setIsOpen(true)} />
-            <Box component="nav">
-              <Drawer
-                anchor={"right"}
-                variant="temporary"
-                open={isOpen}
-                onClose={() => setIsOpen(false)}
-                ModalProps={{
-                  keepMounted: true, // Better open performance on mobile.
-                }}
-                sx={{
-                  display: { xs: "block", sm: "none" },
-                  "& .MuiDrawer-paper": {
-                    boxSizing: "border-box",
-                    width: "50%",
-                  },
-                }}
-              >
-                <Box
+              Khana Khazana
+            </Typography>
+          </StyledLink>
+          {!isLargeView && (
+            <Box sx={{ display: "flex" }}>
+              <StyledLink to="/cart">
+                <ShoppingCartIcon />
+                <Typography
                   sx={{
+                    position: "absolute",
+                    top: 8,
+                    right: "23%",
+                    backgroundColor: "orange",
+                    borderRadius: "50%",
+                    color: "white",
+                    width: 20,
+                    height: 20,
                     display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "space-evenly",
+                    justifyContent: "center",
+                    alignItems: "center",
                     overflow: "hidden",
                   }}
                 >
-                  <StyledLink to="/">
-                    <StyledTypography>Home</StyledTypography>
+                  {cartItems.length}
+                </Typography>
+              </StyledLink>
+            </Box>
+          )}
+          {isLargeView ? (
+            <>
+              <Box
+                sx={{
+                  display: "flex",
+                  width: "70%",
+                  justifyContent: "space-evenly",
+                  overflow: "hidden",
+                }}
+              >
+                <StyledLink to="/">
+                  <StyledTypography>Home</StyledTypography>
+                </StyledLink>
+                <StyledLink to="/about">
+                  <StyledTypography>About</StyledTypography>
+                </StyledLink>
+                <StyledLink to="/help">
+                  <StyledTypography>Help</StyledTypography>
+                </StyledLink>
+                <Box sx={{ display: "flex" }}>
+                  <StyledLink to="/cart">
+                    <ShoppingCartIcon />
+                    <Typography
+                      sx={{
+                        position: "fixed",
+                        top: 8,
+                        right: "33%",
+                        backgroundColor: "orange",
+                        borderRadius: "50%",
+                        color: "white",
+                        width: 20,
+                        height: 21,
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        overflow: "hidden",
+                      }}
+                      data-testid="cart"
+                    >
+                      {cartItems.length}
+                    </Typography>
                   </StyledLink>
-                  <StyledLink to="/about">
-                    <StyledTypography>About</StyledTypography>
-                  </StyledLink>
-                  <StyledLink to="/help">
-                    <StyledTypography>Help</StyledTypography>
-                  </StyledLink>
-                  <StyledTypography
-                    onClick={() =>
-                      setUser({
-                        name: "Abhay",
-                      })
-                    }
-                  >
-                    {user.name}
-                  </StyledTypography>
-                  <Button
-                    type="submit"
-                    onClick={() =>
-                      isAuthenticate
-                        ? setIsAuthenticate(false)
-                        : setIsAuthenticate(true)
-                    }
-                    sx={{
+                </Box>
+                <StyledTypography
+                  onClick={() =>
+                    setUser({
+                      name: "Abhay",
+                    })
+                  }
+                >
+                  {user.name}
+                </StyledTypography>
+                <Button
+                  type="submit"
+                  onClick={() =>
+                    isAuthenticate
+                      ? setIsAuthenticate(false)
+                      : setIsAuthenticate(true)
+                  }
+                  sx={{
+                    background: "orange",
+                    width: "20%",
+                    height: "36px",
+                    color: "#3d4152",
+                    "&:hover ": {
                       background: "orange",
-                      width: "100%",
-                      height: "36px",
-                      color: "#3d4152",
-                      "&:hover ": {
-                        background: "orange",
-                      },
+                    },
+                  }}
+                >
+                  {isAuthenticate ? "Log out" : "Login"}
+                </Button>
+              </Box>
+            </>
+          ) : (
+            <>
+              <Menu onClick={() => setIsOpen(true)} />
+              <Box component="nav">
+                <Drawer
+                  anchor={"right"}
+                  variant="temporary"
+                  open={isOpen}
+                  onClose={() => setIsOpen(false)}
+                  ModalProps={{
+                    keepMounted: true, // Better open performance on mobile.
+                  }}
+                  sx={{
+                    display: { xs: "block", sm: "none" },
+                    "& .MuiDrawer-paper": {
+                      boxSizing: "border-box",
+                      width: "50%",
+                    },
+                  }}
+                >
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "space-evenly",
+                      overflow: "hidden",
                     }}
                   >
-                    {isAuthenticate ? "Log out" : "Login"}
-                  </Button>
-                </Box>
-              </Drawer>
-            </Box>
-          </>
-        )}
-      </Box>
-    </StyledHeading>
+                    <StyledLink to="/">
+                      <StyledTypography>Home</StyledTypography>
+                    </StyledLink>
+                    <StyledLink to="/about">
+                      <StyledTypography>About</StyledTypography>
+                    </StyledLink>
+                    <StyledLink to="/help">
+                      <StyledTypography>Help</StyledTypography>
+                    </StyledLink>
+                    <StyledTypography
+                      onClick={() =>
+                        setUser({
+                          name: "Abhay",
+                        })
+                      }
+                    >
+                      {user.name}
+                    </StyledTypography>
+                    <Button
+                      type="submit"
+                      onClick={() =>
+                        isAuthenticate
+                          ? setIsAuthenticate(false)
+                          : setIsAuthenticate(true)
+                      }
+                      sx={{
+                        background: "orange",
+                        width: "100%",
+                        height: "36px",
+                        color: "#3d4152",
+                        "&:hover ": {
+                          background: "orange",
+                        },
+                      }}
+                    >
+                      {isAuthenticate ? "Log out" : "Login"}
+                    </Button>
+                  </Box>
+                </Drawer>
+              </Box>
+            </>
+          )}
+        </Box>
+      </StyledHeading>
+    </ErrorBoundary>
   );
 };
 
