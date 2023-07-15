@@ -3,7 +3,11 @@ import { Box } from "@mui/material";
 const Shimmer = () => {
   return (
     <>
-      <Box className="resturantList" sx={{ marginTop: "78px" }}>
+      <Box
+        className="resturantList"
+        data-testid="shimmer"
+        sx={{ marginTop: "78px" }}
+      >
         {Array(10)
           .fill("")
           .map((e, i) => {

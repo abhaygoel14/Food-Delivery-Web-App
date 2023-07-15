@@ -7,13 +7,15 @@
   "scripts": {
     "dev": "parcel index.html",
     "build": "parcel build index.html",
-    "test": "jest"
+    "test": "jest",
+    "watch-test": "jest --watch"
   },
   "author": "Abhay Goel",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.22.9",
     "@babel/preset-react": "^7.22.5",
+    "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "babel-plugin-transform-remove-console": "^6.9.4",
     "buffer": "^5.7.1",

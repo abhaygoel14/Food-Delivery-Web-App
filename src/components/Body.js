@@ -53,6 +53,7 @@ const Body = () => {
         sx={{ marginTop: "90px", display: "flex", justifyContent: "center" }}
       >
         <TextField
+          data-testid="search-input"
           fullWidth
           variant="outlined"
           placeholder="Search for restaurant"
@@ -87,7 +88,7 @@ const Body = () => {
               <Box sx={{ marginLeft: 5 }}>
                 <Button
                   type="submit"
-                  data-testid="search"
+                  data-testid="search-btn"
                   onClick={() => {
                     const data = filterData(searchText, allRestaurantList);
                     setFilterRestaurantList(data);
@@ -108,7 +109,11 @@ const Body = () => {
         />
       </Box>
       {allRestaurantList.length > 0 ? (
-        <Box className="resturantList" sx={{ background: "" }}>
+        <Box
+          className="resturantList"
+          data-testid="resList"
+          sx={{ background: "" }}
+        >
           {filterRestaurantList.length > 0 ? (
             filterRestaurantList?.map((resturant) => {
               console.log(resturant?.data);
